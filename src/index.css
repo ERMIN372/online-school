@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope Variable", "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Unbounded Variable", "Unbounded", "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand-50: #f6f3ff;
+  --color-brand-100: #ede8ff;
+  --color-brand-200: #dcd3ff;
+  --color-brand-300: #c2b1ff;
+  --color-brand-400: #a283ff;
+  --color-brand-500: #8655fb;
+  --color-brand-600: #7433f0;
+  --color-brand-700: #6322d6;
+  --color-brand-800: #521db0;
+  --color-brand-900: #431a8c;
+
+  --color-mint-50: #ebfdf6;
+  --color-mint-100: #cffaea;
+  --color-mint-200: #a4f3d8;
+  --color-mint-300: #6de7c1;
+  --color-mint-400: #35d3a6;
+  --color-mint-500: #12b98d;
+  --color-mint-600: #079573;
+  --color-mint-700: #09775e;
+
+  --color-ink-900: #16112b;
+  --color-ink-700: #3b3656;
+  --color-ink-500: #6b6788;
+  --color-ink-400: #908cab;
+  --color-ink-200: #e4e2ee;
+  --color-ink-100: #f0eff6;
+  --color-ink-50: #f8f7fc;
+
+  --shadow-soft: 0 1px 2px rgb(22 17 43 / 0.04), 0 8px 24px -12px rgb(22 17 43 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(22 17 43 / 0.04), 0 24px 48px -20px rgb(99 34 214 / 0.28);
+  --shadow-glow: 0 12px 32px -10px rgb(116 51 240 / 0.55);
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 8s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-spin-slow: spin 1s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white font-sans text-ink-900;
+    font-feature-settings: "ss01", "cv11";
+  }
+  ::selection {
+    @apply bg-brand-200 text-brand-900;
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@utility container-x {
+  @apply mx-auto w-full max-w-[1320px] px-4 sm:px-6 lg:px-10;
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3.5 text-[15px] font-semibold transition-all duration-300 disabled:pointer-events-none disabled:opacity-60 cursor-pointer select-none;
+}
+@utility btn-primary {
+  @apply btn bg-brand-600 text-white shadow-glow hover:-translate-y-0.5 hover:bg-brand-700 active:translate-y-0;
+}
+@utility btn-mint {
+  @apply btn bg-mint-400 text-ink-900 hover:-translate-y-0.5 hover:bg-mint-300;
+}
+@utility btn-ghost {
+  @apply btn bg-white text-ink-900 ring-1 ring-ink-200 hover:ring-brand-300 hover:text-brand-700;
+}
+@utility card {
+  @apply rounded-3xl bg-white ring-1 ring-ink-200/70 shadow-soft;
+}
+@utility eyebrow {
+  @apply inline-flex items-center gap-2 rounded-full bg-brand-50 px-3.5 py-1.5 text-[13px] font-semibold text-brand-700 ring-1 ring-brand-100;
+}
+@utility title-section {
+  @apply font-display text-3xl font-semibold leading-[1.15] tracking-tight sm:text-4xl lg:text-[44px];
+}
+@utility input {
+  @apply w-full rounded-2xl bg-ink-50 px-4 py-3.5 text-[15px] text-ink-900 ring-1 ring-ink-200 outline-none transition placeholder:text-ink-400 focus:bg-white focus:ring-2 focus:ring-brand-400;
+}
+@utility label {
+  @apply mb-2 block text-[13px] font-semibold text-ink-700;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(116 51 240 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(116 51 240 / 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+.bg-dots {
+  background-image: radial-gradient(rgb(255 255 255 / 0.35) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+.noise-mask {
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+}
